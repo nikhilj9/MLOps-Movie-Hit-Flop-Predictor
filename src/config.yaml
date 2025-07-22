@@ -1,0 +1,29 @@
+mlflow:
+  tracking_uri: "sqlite:////workspaces/MLOps-Movie-Hit-Flop-Predictor/mlflow.db"
+  experiment_name: "movie-hit-flop-exp"
+
+data:
+  path: "data/popular_movies.csv"
+
+model:
+  genres:
+    - Action
+    - Adventure
+    - Animation
+    - Comedy
+    - Crime
+    - Documentary
+    - Drama
+    - Family
+    - Fantasy
+    - History
+    - Horror
+    - Music
+    - Mystery
+    - Romance
+    - Science Fiction
+    - TV Movie
+    - Thriller
+    - War
+    - Western
+  target: is_hit
