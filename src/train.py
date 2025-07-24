@@ -1,11 +1,11 @@
 import mlflow
-import localmodel as dm
+from src import localmodel as dm
 
 from sklearn.model_selection import train_test_split
 from mlflow.models.signature import infer_signature
-from data import load_data, preprocess_data
-from model import train_model
-from utils import load_config
+from src.data import load_data, preprocess_data
+from src.model import train_model
+from src.utils import load_config
 from mlflow import MlflowClient
 
 

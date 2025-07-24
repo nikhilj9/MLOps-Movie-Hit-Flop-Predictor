@@ -1,3 +1,4 @@
+import traceback
 import pandas as pd
 import logging
 import mlflow
@@ -52,7 +53,7 @@ def read_root():
 @app.post("/predict")
 def predict(features: MovieFeatures):
     try:
-        input_dict = features.model_dump()
+        input_dict = features.dict()
         logging.info(f"Received input: {input_dict}")
 
         df = pd.DataFrame([input_dict])
@@ -60,6 +61,7 @@ def predict(features: MovieFeatures):
             columns={"Science_Fiction": "Science Fiction", "TV_Movie": "TV Movie"},
             inplace=True,
         )
+        df = df.astype("float64")
 
         prediction = model.predict(df)[0]
         logging.info(f"Prediction: {prediction}")
@@ -68,4 +70,5 @@ def predict(features: MovieFeatures):
 
     except Exception as e:
         logging.error(f"Prediction failed: {e}")
+        traceback.print_exc()  # add this to log the stack trace
         raise HTTPException(status_code=500, detail="Prediction error. Check logs.")
