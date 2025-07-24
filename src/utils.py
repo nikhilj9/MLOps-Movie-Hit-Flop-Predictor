@@ -1,9 +1,11 @@
 import yaml
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
+
 def load_config(path):
     with open(path, "r") as file:
         return yaml.safe_load(file)
+
 
 def evaluate_model(y_true, y_pred):
     return {

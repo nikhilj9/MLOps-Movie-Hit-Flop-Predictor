@@ -13,6 +13,7 @@ mlflow.set_tracking_uri(config["mlflow"]["tracking_uri"])
 model_name = "MovieHitFlopModel-RandomForestClassifier"
 model_stage = "Production"
 
+
 class MovieFeatures(BaseModel):
     budget: float
     runtime: float
@@ -36,26 +37,29 @@ class MovieFeatures(BaseModel):
     War: int
     Western: int
 
+
 app = FastAPI()
 
-#model = joblib.load("artifacts/model.pkl")
+# model = joblib.load("artifacts/model.pkl")
 model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_stage}")
+
 
 @app.get("/")
 def read_root():
     return {"message": "Model is ready for prediction!"}
+
 
 @app.post("/predict")
 def predict(features: MovieFeatures):
     try:
         input_dict = features.model_dump()
         logging.info(f"Received input: {input_dict}")
-        
+
         df = pd.DataFrame([input_dict])
-        df.rename(columns={
-            "Science_Fiction": "Science Fiction",
-            "TV_Movie": "TV Movie"
-        }, inplace=True)
+        df.rename(
+            columns={"Science_Fiction": "Science Fiction", "TV_Movie": "TV Movie"},
+            inplace=True,
+        )
 
         prediction = model.predict(df)[0]
         logging.info(f"Prediction: {prediction}")

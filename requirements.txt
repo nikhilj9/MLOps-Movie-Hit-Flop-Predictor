@@ -23,3 +23,4 @@ evidently==0.3.2
 griffe==0.20.0
 
 ruff=0.12.4
+black=25.1.0
