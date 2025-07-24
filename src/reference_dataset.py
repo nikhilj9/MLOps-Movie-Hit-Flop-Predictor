@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def reference_dataset(X_test, y_test, best_model):
 
     columns = [
@@ -23,7 +24,7 @@ def reference_dataset(X_test, y_test, best_model):
         "TV Movie",
         "Thriller",
         "War",
-        "Western"
+        "Western",
     ]
 
     if not isinstance(X_test, pd.DataFrame):
@@ -38,8 +39,10 @@ def reference_dataset(X_test, y_test, best_model):
 
     # Create a DataFrame combining features + true labels + predictions
     reference_df_sample = X_test_sample.copy()
-    reference_df_sample['true_label'] = y_test_sample.values if hasattr(y_test_sample, 'values') else y_test_sample
-    reference_df_sample['predicted'] = y_pred_sample
+    reference_df_sample["true_label"] = (
+        y_test_sample.values if hasattr(y_test_sample, "values") else y_test_sample
+    )
+    reference_df_sample["predicted"] = y_pred_sample
 
     # Save to CSV
-    reference_df_sample.to_csv('data/reference_dataset.csv', index=False)
+    reference_df_sample.to_csv("data/reference_dataset.csv", index=False)
