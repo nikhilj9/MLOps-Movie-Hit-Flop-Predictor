@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
 from fastapi import HTTPException
-from utils import load_config
+from src.utils import load_config
 
 logging.basicConfig(level=logging.INFO)
 config = load_config("src/config.yaml")

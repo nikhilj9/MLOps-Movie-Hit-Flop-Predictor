@@ -4,9 +4,7 @@ from sklearn.model_selection import train_test_split
 from mlflow.models.signature import infer_signature
 
 from data import load_data, preprocess_data
-#from model import train_model
-from model import train_model_rf as train_model
-#from model import train_model_xgb as train_model
+from model import train_model
 from utils import load_config, evaluate_model
 from mlflow import MlflowClient
 
@@ -41,12 +39,7 @@ def train_and_log():
         prediction = model.predict(input_example)
         signature = infer_signature(input_example, prediction)
 
-        mlflow.sklearn.log_model(
-                sk_model=model,
-                name="model",
-                input_example=input_example,
-                signature=signature
-            )
+        mlflow.sklearn.log_model(sk_model=model, artifact_path="model", input_example=input_example, signature=signature)
 
         print("Logged input example:")
         print(input_example)

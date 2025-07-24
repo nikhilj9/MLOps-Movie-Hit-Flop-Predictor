@@ -1,5 +1,5 @@
 mlflow:
-  tracking_uri: "sqlite:////workspaces/MLOps-Movie-Hit-Flop-Predictor/mlflow.db"
+  tracking_uri: "sqlite:///mlflow.db"
   experiment_name: "movie-hit-flop-exp"
 
 data:

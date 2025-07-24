@@ -1,10 +1,12 @@
+import pandas as pd
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+import reference_dataset as rd
 
-def train_model_rf(X_train, y_train, X_test, y_test):
+def train_model(X_train, y_train, X_test, y_test):
     pipe = Pipeline([
         ("scaler", StandardScaler()),
         ("model", RandomForestClassifier(random_state=42))
@@ -23,5 +25,7 @@ def train_model_rf(X_train, y_train, X_test, y_test):
     best_model = grid_search.best_estimator_
     y_pred = best_model.predict(X_test)
     report = classification_report(y_test, y_pred, output_dict=True)
+
+    #rd.reference_dataset(X_test, y_pred, best_model)
 
     return best_model, report, grid_search.best_params_
