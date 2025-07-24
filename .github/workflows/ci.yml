@@ -26,7 +26,7 @@ jobs:
           pip install pytest black ruff
 
       - name: Lint code with ruff
-        run: ruff .
+        run: ruff check .
 
       - name: Check formatting with black
         run: black . --check
