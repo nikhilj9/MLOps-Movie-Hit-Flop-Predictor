@@ -1,10 +1,8 @@
 import pandas as pd
 import logging
 import mlflow
-import joblib
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Optional
 from fastapi import HTTPException
 from src.utils import load_config
 

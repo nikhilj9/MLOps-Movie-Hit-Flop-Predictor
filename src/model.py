@@ -1,10 +1,8 @@
-import pandas as pd
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-import reference_dataset as rd
 
 def train_model(X_train, y_train, X_test, y_test):
     pipe = Pipeline([
