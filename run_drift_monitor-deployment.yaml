@@ -1,0 +1,45 @@
+###
+### A complete description of a Prefect Deployment for flow 'Drift Monitoring Flow'
+###
+name: daily-drift-check
+description: null
+version: ed8d9c09441a98c3430a86cc5cca0456
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: null
+tags: []
+parameters: {}
+schedule:
+  interval: 60.0
+  anchor_date: '2025-07-23T15:16:37.725780+00:00'
+  timezone: UTC
+is_schedule_active: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: Drift Monitoring Flow
+manifest_path: null
+storage: null
+path: /workspaces/MLOps-Movie-Hit-Flop-Predictor
+entrypoint: src/prefect_drift_monitor.py:run_drift_monitor
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties: {}
+  required: null
+  definitions: null
+timestamp: '2025-07-23T15:16:37.727018+00:00'
+triggers: []
+enforce_parameter_schema: null
