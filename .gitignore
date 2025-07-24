@@ -205,3 +205,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# MLOps Zoomcamp project-specific artifacts
+artifacts/
+mlruns/
+mlflow.db
+monitoring_reports/

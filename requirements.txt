@@ -15,6 +15,7 @@ prefect==2.14.15
 # FastAPI for serving
 fastapi==0.95.2
 uvicorn==0.35.0
+httpx==0.23
 pydantic==1.10.13
 typing-extensions==4.14.1
 
@@ -24,3 +25,5 @@ griffe==0.20.0
 
 ruff==0.12.4
 black==25.1.0
+pytest==8.4.1
+pre-commit==4.2.0
