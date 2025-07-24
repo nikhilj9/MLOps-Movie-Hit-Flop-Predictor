@@ -95,7 +95,7 @@ def main():
         mlflow.sklearn.log_model(model, name="model", input_example=input_example, signature=signature)
 
         print(input_example)
-        print(f"Prediction ",model.predict(input_example))
+        print("Prediction ",model.predict(input_example))
 
 if __name__ == "__main__":
     main()

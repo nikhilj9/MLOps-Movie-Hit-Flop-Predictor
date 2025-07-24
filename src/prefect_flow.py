@@ -1,7 +1,7 @@
 from prefect import flow, task
 from data import load_data, preprocess_data
 from model import train_model
-from utils import load_config, evaluate_model
+from utils import load_config
 from sklearn.model_selection import train_test_split
 from mlflow.models.signature import infer_signature
 import mlflow

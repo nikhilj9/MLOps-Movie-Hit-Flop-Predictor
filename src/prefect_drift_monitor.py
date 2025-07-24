@@ -4,9 +4,7 @@ from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset
 from evidently import ColumnMapping
 import pandas as pd
-import joblib
 from src.train_and_register import train_and_log_model
-from src.model import train_and_log_model
 
 @task
 def load_data():
