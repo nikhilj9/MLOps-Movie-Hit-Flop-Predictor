@@ -3,15 +3,12 @@ from fastapi.testclient import TestClient
 from src.main import app
 
 
-@patch("src.main.mlflow.set_tracking_uri")
-@patch("src.main.mlflow.pyfunc.load_model")
-def test_predict_endpoint(mock_load_model, mock_set_tracking_uri):
-    # Mock the MLflow model object
+@patch("src.main.load_model")
+def test_predict_endpoint(mock_load_model):
     mock_model = MagicMock()
     mock_model.predict.return_value = [1]
     mock_load_model.return_value = mock_model
 
-    # Import after mocking to prevent real MLflow initialization
     client = TestClient(app)
 
     payload = {
@@ -44,12 +41,8 @@ def test_predict_endpoint(mock_load_model, mock_set_tracking_uri):
     assert response.json() == {"prediction": 1}
 
 
-@patch("src.main.mlflow.set_tracking_uri")
-def test_root_endpoint(mock_set_tracking_uri):
-    from src.main import app
-
+def test_root_endpoint():
     client = TestClient(app)
-
     response = client.get("/")
 
     assert response.status_code == 200
