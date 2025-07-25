@@ -14,3 +14,6 @@ test:
 
 run:
 	uvicorn src.main:app --reload
+
+pre-commit:
+	pre-commit run --all-files
