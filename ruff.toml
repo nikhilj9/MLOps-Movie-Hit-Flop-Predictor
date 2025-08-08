@@ -1,0 +1,7 @@
+# ruff.toml
+line-length = 160
+target-version = "py310"
+
+[lint]
+select = ["E", "F", "I"]
+fixable = ["ALL"]

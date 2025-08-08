@@ -1,0 +1,17 @@
+services:
+  # MLflow Server
+  mlflow-server:
+    build: .
+    container_name: mlflow-server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlflow_data:/app/mlflow_data
+      - ./data:/app/data
+    command: >
+      sh -c "mlflow server
+      --backend-store-uri sqlite:///mlflow_data/mlflow.db
+      --default-artifact-root /app/mlflow_data/artifacts
+      --host 0.0.0.0
+      --port 5000"
+    restart: unless-stopped

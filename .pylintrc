@@ -1,0 +1,20 @@
+[MESSAGES CONTROL]
+disable=missing-module-docstring,
+        missing-class-docstring,
+        missing-function-docstring,
+        too-few-public-methods,
+        invalid-name,
+        logging-fstring-interpolation,
+        broad-exception-caught,
+        broad-exception-raised,
+        unused-argument,
+        unspecified-encoding,
+        no-name-in-module,
+        redefined-outer-name,
+        raise-missing-from
+
+[FORMAT]
+max-line-length=88
+
+[BASIC]
+good-names=i,j,k,ex,Run,_,X,y,df,db

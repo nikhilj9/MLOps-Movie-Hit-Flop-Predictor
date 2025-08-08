@@ -1,19 +1,13 @@
-.PHONY: train lint test format run
+.PHONY: install lint test run
 
-train:
-	python src/train_model.py --config configs/train.yaml
+install:
+	pip install -r requirements.txt
 
 lint:
-	ruff check .
-
-format:
-	black .
+	ruff check . --fix
 
 test:
-	pytest tests/
+	pytest
 
 run:
 	uvicorn src.main:app --reload
-
-pre-commit:
-	pre-commit run --all-files

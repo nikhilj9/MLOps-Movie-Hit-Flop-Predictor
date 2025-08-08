@@ -1,0 +1,92 @@
+services:
+  # MLflow Server (shared model registry)
+  mlflow-server:
+    build: .
+    container_name: mlflow-inference
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./mlflow_data:/app/mlflow_data
+      - ./data:/app/data
+    command: >
+      sh -c "mlflow server
+      --backend-store-uri sqlite:///mlflow_data/mlflow.db
+      --default-artifact-root /app/mlruns
+      --host 0.0.0.0
+      --port 5000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Movie Prediction Inference API
+  movie-inference-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.inference
+    container_name: movie-inference-api
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - USE_AWS_MONITORING=${USE_AWS_MONITORING:-false}
+      - REVIEWER_EMAIL=${REVIEWER_EMAIL:-}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
+      - MONITORING_TEST_MODE=${MONITORING_TEST_MODE:-true}
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./mlflow_data:/app/mlflow_data
+      - ./src:/app/src
+      - ./monitoring_data:/app/monitoring_data
+      - ./monitoring_reports:/app/monitoring_reports
+    depends_on:
+      mlflow-server:
+        condition: service_healthy
+    command: python -m src.inference_service
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Model Monitoring Service
+  monitoring-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.inference
+    container_name: monitoring-service
+    ports:
+      - "9000:9000"
+    environment:
+      - PYTHONPATH=/app
+      - USE_AWS_MONITORING=${USE_AWS_MONITORING:-false}
+      - REVIEWER_EMAIL=${REVIEWER_EMAIL:-}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
+      - MONITORING_TEST_MODE=${MONITORING_TEST_MODE:-true}
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./mlflow_data:/app/mlflow_data
+      - ./src:/app/src
+      - ./data:/app/data
+      - ./monitoring_data:/app/monitoring_data
+      - ./monitoring_reports:/app/monitoring_reports
+    depends_on:
+      movie-inference-api:
+        condition: service_healthy
+    command: python -m src.monitoring_service
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  mlflow_data:
+    driver: local

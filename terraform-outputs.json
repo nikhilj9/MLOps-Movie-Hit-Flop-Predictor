@@ -1,0 +1,418 @@
+{
+  "alb_security_group_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sg-0513f437f2076d4c5"
+  },
+  "autoscaling_group_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:autoscaling:us-east-1:462397577625:autoScalingGroup:e34ba7a0-a693-444c-8f06-d5348da2791c:autoScalingGroupName/movie-prediction-mlops-asg"
+  },
+  "autoscaling_group_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-asg"
+  },
+  "aws_account_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "462397577625"
+  },
+  "aws_region": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-east-1"
+  },
+  "backup_configuration": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "automated_snapshots": "string",
+        "rds_backup_retention": "string",
+        "rds_backup_window": "string",
+        "s3_encryption": "string",
+        "s3_versioning": "string"
+      }
+    ],
+    "value": {
+      "automated_snapshots": "RDS automated snapshots enabled",
+      "rds_backup_retention": "7 days",
+      "rds_backup_window": "03:00-04:00",
+      "s3_encryption": "Enabled",
+      "s3_versioning": "Enabled"
+    }
+  },
+  "cloudwatch_log_group_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "/aws/ec2/movie-prediction-mlops"
+  },
+  "database_security_group_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sg-0859a3767761c89e7"
+  },
+  "db_connection_string": {
+    "sensitive": true,
+    "type": "string",
+    "value": "postgresql://mlflow_user:MLOpsProject_2025@movie-prediction-mlops-mlflow-db.cyd6uqm8q3hn.us-east-1.rds.amazonaws.com:5432/mlflow"
+  },
+  "db_instance_address": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-mlflow-db.cyd6uqm8q3hn.us-east-1.rds.amazonaws.com"
+  },
+  "db_instance_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-mlflow-db.cyd6uqm8q3hn.us-east-1.rds.amazonaws.com:5432"
+  },
+  "db_instance_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "mlflow"
+  },
+  "db_instance_port": {
+    "sensitive": false,
+    "type": "number",
+    "value": 5432
+  },
+  "db_instance_username": {
+    "sensitive": true,
+    "type": "string",
+    "value": "mlflow_user"
+  },
+  "deployment_info": {
+    "sensitive": true,
+    "type": [
+      "object",
+      {
+        "db_endpoint": "string",
+        "instance_profile": "string",
+        "key_pair_name": "string",
+        "load_balancer_dns": "string",
+        "public_subnet_ids": [
+          "tuple",
+          [
+            "string",
+            "string"
+          ]
+        ],
+        "s3_bucket": "string",
+        "security_group_id": "string",
+        "vpc_id": "string"
+      }
+    ],
+    "value": {
+      "db_endpoint": "movie-prediction-mlops-mlflow-db.cyd6uqm8q3hn.us-east-1.rds.amazonaws.com:5432",
+      "instance_profile": "movie-prediction-mlops-ec2-profile",
+      "key_pair_name": "movie-prediction-mlops-key",
+      "load_balancer_dns": "movie-prediction-mlops-alb-1918287394.us-east-1.elb.amazonaws.com",
+      "public_subnet_ids": [
+        "subnet-09face65a193b208f",
+        "subnet-0ebe6682f7c7edb85"
+      ],
+      "s3_bucket": "movie-prediction-mlops-mlflow-artifacts-388855a998cf44bc",
+      "security_group_id": "sg-0616e7a009d9c31e7",
+      "vpc_id": "vpc-0e6246ab23569bb45"
+    }
+  },
+  "ec2_instance_profile_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:iam::462397577625:instance-profile/movie-prediction-mlops-ec2-profile"
+  },
+  "ec2_instance_profile_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-ec2-profile"
+  },
+  "ec2_role_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:iam::462397577625:role/movie-prediction-mlops-ec2-role"
+  },
+  "ec2_role_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-ec2-role"
+  },
+  "environment_variables": {
+    "sensitive": true,
+    "type": [
+      "object",
+      {
+        "AWS_REGION": "string",
+        "DB_HOST": "string",
+        "DB_NAME": "string",
+        "DB_PASSWORD": "string",
+        "DB_USER": "string",
+        "ENVIRONMENT": "string",
+        "MLFLOW_DEFAULT_ARTIFACT_ROOT": "string",
+        "MLFLOW_TRACKING_URI": "string",
+        "MONITORING_TEST_MODE": "string",
+        "PREFECT_API_URL": "string",
+        "S3_BUCKET": "string",
+        "USE_AWS_MONITORING": "string"
+      }
+    ],
+    "value": {
+      "AWS_REGION": "us-east-1",
+      "DB_HOST": "movie-prediction-mlops-mlflow-db.cyd6uqm8q3hn.us-east-1.rds.amazonaws.com",
+      "DB_NAME": "mlflow",
+      "DB_PASSWORD": "MLOpsProject_2025",
+      "DB_USER": "mlflow_user",
+      "ENVIRONMENT": "cloud",
+      "MLFLOW_DEFAULT_ARTIFACT_ROOT": "s3://movie-prediction-mlops-mlflow-artifacts-388855a998cf44bc/artifacts",
+      "MLFLOW_TRACKING_URI": "postgresql://mlflow_user:MLOpsProject_2025@movie-prediction-mlops-mlflow-db.cyd6uqm8q3hn.us-east-1.rds.amazonaws.com:5432/mlflow",
+      "MONITORING_TEST_MODE": "false",
+      "PREFECT_API_URL": "http://localhost:4200/api",
+      "S3_BUCKET": "movie-prediction-mlops-mlflow-artifacts-388855a998cf44bc",
+      "USE_AWS_MONITORING": "true"
+    }
+  },
+  "estimated_monthly_cost": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "cloudwatch": "string",
+        "data_transfer": "string",
+        "ec2_instances": "string",
+        "load_balancer": "string",
+        "rds_database": "string",
+        "s3_storage": "string",
+        "total_estimated": "string"
+      }
+    ],
+    "value": {
+      "cloudwatch": "Free Tier: 10 custom metrics",
+      "data_transfer": "Free Tier: 1GB outbound per month",
+      "ec2_instances": "Free Tier: 750 hours/month for t2.micro",
+      "load_balancer": "~$16.20/month (750 hours free tier)",
+      "rds_database": "Free Tier: 750 hours/month for db.t2.micro",
+      "s3_storage": "Free Tier: 5GB storage, 20,000 GET requests",
+      "total_estimated": "$16-25/month (after free tier hours)"
+    }
+  },
+  "health_check_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "http://movie-prediction-mlops-alb-1918287394.us-east-1.elb.amazonaws.com/health"
+  },
+  "inference_api_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "http://movie-prediction-mlops-alb-1918287394.us-east-1.elb.amazonaws.com/docs"
+  },
+  "internet_gateway_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "igw-0b0370250a5013fd7"
+  },
+  "key_pair_fingerprint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "a1:a8:de:4a:3d:4e:b7:85:87:3a:a1:d8:e9:7f:a0:87"
+  },
+  "key_pair_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-key"
+  },
+  "launch_template_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "lt-031c9b1ca85be0da5"
+  },
+  "launch_template_latest_version": {
+    "sensitive": false,
+    "type": "number",
+    "value": 1
+  },
+  "load_balancer_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:elasticloadbalancing:us-east-1:462397577625:loadbalancer/app/movie-prediction-mlops-alb/fb8103a36b5e60a5"
+  },
+  "load_balancer_dns_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-alb-1918287394.us-east-1.elb.amazonaws.com"
+  },
+  "load_balancer_zone_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "Z35SXDOTRQ7X7K"
+  },
+  "monitoring_dashboard_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "http://movie-prediction-mlops-alb-1918287394.us-east-1.elb.amazonaws.com:9000/dashboard"
+  },
+  "private_subnet_ids": {
+    "sensitive": false,
+    "type": [
+      "tuple",
+      [
+        "string",
+        "string"
+      ]
+    ],
+    "value": [
+      "subnet-0a8163fa03b0aae36",
+      "subnet-02d4427369a055425"
+    ]
+  },
+  "public_subnet_ids": {
+    "sensitive": false,
+    "type": [
+      "tuple",
+      [
+        "string",
+        "string"
+      ]
+    ],
+    "value": [
+      "subnet-09face65a193b208f",
+      "subnet-0ebe6682f7c7edb85"
+    ]
+  },
+  "resource_tags": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "Contact": "string",
+        "CostCenter": "string",
+        "Environment": "string",
+        "ManagedBy": "string",
+        "Owner": "string",
+        "Project": "string",
+        "Purpose": "string"
+      }
+    ],
+    "value": {
+      "Contact": "nikhil26.jadhav@gmail.com",
+      "CostCenter": "ml-ops",
+      "Environment": "dev",
+      "ManagedBy": "terraform",
+      "Owner": "mlops-team",
+      "Project": "movie-prediction-mlops",
+      "Purpose": "movie-prediction"
+    }
+  },
+  "s3_artifacts_uri": {
+    "sensitive": false,
+    "type": "string",
+    "value": "s3://movie-prediction-mlops-mlflow-artifacts-388855a998cf44bc/artifacts"
+  },
+  "s3_bucket_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:s3:::movie-prediction-mlops-mlflow-artifacts-388855a998cf44bc"
+  },
+  "s3_bucket_domain_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-mlflow-artifacts-388855a998cf44bc.s3.amazonaws.com"
+  },
+  "s3_bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "movie-prediction-mlops-mlflow-artifacts-388855a998cf44bc"
+  },
+  "security_summary": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "database_private": "string",
+        "encryption_enabled": "string",
+        "iam_roles": "string",
+        "security_groups": "string",
+        "ssl_termination": "string",
+        "vpc_cidr": "string"
+      }
+    ],
+    "value": {
+      "database_private": "Database is in private subnets",
+      "encryption_enabled": "S3 and RDS encryption enabled",
+      "iam_roles": "Least privilege IAM roles configured",
+      "security_groups": "Restrictive security groups configured",
+      "ssl_termination": "Available at load balancer level",
+      "vpc_cidr": "10.0.0.0/16"
+    }
+  },
+  "sns_topic_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:sns:us-east-1:462397577625:movie-prediction-mlops-alerts"
+  },
+  "target_group_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:elasticloadbalancing:us-east-1:462397577625:targetgroup/movie-prediction-mlops-tg/4d62b9a8c0dd26c4"
+  },
+  "troubleshooting_info": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "common_ports": [
+          "object",
+          {
+            "http": "number",
+            "https": "number",
+            "inference_api": "number",
+            "monitoring": "number",
+            "postgresql": "number",
+            "ssh": "number"
+          }
+        ],
+        "log_locations": [
+          "object",
+          {
+            "application_logs": "string",
+            "docker_logs": "string",
+            "system_logs": "string"
+          }
+        ],
+        "ssh_command": "string"
+      }
+    ],
+    "value": {
+      "common_ports": {
+        "http": 80,
+        "https": 443,
+        "inference_api": 8000,
+        "monitoring": 9000,
+        "postgresql": 5432,
+        "ssh": 22
+      },
+      "log_locations": {
+        "application_logs": "/var/log/app/",
+        "docker_logs": "docker logs \u003ccontainer-name\u003e",
+        "system_logs": "/var/log/messages"
+      },
+      "ssh_command": "ssh -i /path/to/private/key ec2-user@\u003cinstance-ip\u003e"
+    }
+  },
+  "vpc_cidr_block": {
+    "sensitive": false,
+    "type": "string",
+    "value": "10.0.0.0/16"
+  },
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-0e6246ab23569bb45"
+  },
+  "web_security_group_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sg-0616e7a009d9c31e7"
+  }
+}

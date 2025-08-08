@@ -1,0 +1,124 @@
+{
+  "sample_size": 1000,
+  "creation_date": "2025-08-05T08:06:54.102203",
+  "feature_stats": {
+    "budget": {
+      "type": "numerical",
+      "mean": 20678377.894,
+      "std": 42945806.80648194,
+      "min": 0.0,
+      "max": 400000000.0,
+      "median": 4375.0,
+      "missing_rate": 0.0
+    },
+    "runtime": {
+      "type": "numerical",
+      "mean": 102.312,
+      "std": 30.614700977078247,
+      "min": 0.0,
+      "max": 242.0,
+      "median": 102.0,
+      "missing_rate": 0.0
+    },
+    "vote_average": {
+      "type": "numerical",
+      "mean": 6.236837,
+      "std": 1.8332347968144318,
+      "min": 0.0,
+      "max": 10.0,
+      "median": 6.634,
+      "missing_rate": 0.0
+    },
+    "vote_count": {
+      "type": "numerical",
+      "mean": 1789.545,
+      "std": 3536.0720699186354,
+      "min": 0.0,
+      "max": 28453.0,
+      "median": 430.0,
+      "missing_rate": 0.0
+    },
+    "popularity": {
+      "type": "numerical",
+      "mean": 7.8155139,
+      "std": 41.08167637390479,
+      "min": 0.8281,
+      "max": 1179.7021,
+      "median": 3.45045,
+      "missing_rate": 0.0
+    },
+    "genre_count": {
+      "type": "numerical",
+      "mean": 2.519,
+      "std": 1.132661433051343,
+      "min": 0.0,
+      "max": 8.0,
+      "median": 3.0,
+      "missing_rate": 0.0
+    },
+    "release_year": {
+      "type": "numerical",
+      "mean": 2008.431,
+      "std": 17.158602992570714,
+      "min": 1920.0,
+      "max": 2027.0,
+      "median": 2014.0,
+      "missing_rate": 0.0
+    },
+    "budget_category": {
+      "type": "categorical",
+      "unique_count": 4,
+      "most_common": "Ultra_Low",
+      "most_common_freq": 0.53,
+      "missing_rate": 0.0,
+      "categories": {
+        "Ultra_Low": 530,
+        "Low": 354,
+        "Medium": 96,
+        "High": 20
+      }
+    },
+    "main_genre": {
+      "type": "categorical",
+      "unique_count": 20,
+      "most_common": "Drama",
+      "most_common_freq": 0.226,
+      "missing_rate": 0.0,
+      "categories": {
+        "Drama": 226,
+        "Action": 148,
+        "Comedy": 131,
+        "Horror": 106,
+        "Animation": 93,
+        "Thriller": 47,
+        "Romance": 43,
+        "Crime": 39,
+        "Adventure": 38,
+        "Science Fiction": 24
+      }
+    },
+    "is_english": {
+      "type": "numerical",
+      "mean": 0.638,
+      "std": 0.4808192874533916,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 1.0,
+      "missing_rate": 0.0
+    },
+    "is_hit": {
+      "type": "numerical",
+      "mean": 0.3,
+      "std": 0.4584868702702512,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 0.0,
+      "missing_rate": 0.0
+    }
+  },
+  "data_quality": {
+    "total_missing_rate": 0.0,
+    "duplicate_rate": 0.007,
+    "feature_count": 11
+  }
+}

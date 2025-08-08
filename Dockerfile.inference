@@ -11,25 +11,26 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first
+# Copy requirements and install dependencies
 COPY requirements.txt .
-
-# Upgrade pip and install dependencies
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Copy source code
 COPY src/ ./src/
-COPY data/ ./data/
 
 # Set Python path
 ENV PYTHONPATH=/app
 
 # Create necessary directories
-RUN mkdir -p mlflow_data/artifacts flows
+RUN mkdir -p mlflow_data/artifacts
 
-# Expose ports
-EXPOSE 5000 8080
+# Expose inference API port
+EXPOSE 8000
 
-# Default command
-CMD ["python", "-m", "src.main", "--mode", "train"]
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Default command - start inference service
+CMD ["python", "-m", "src.inference_service"]

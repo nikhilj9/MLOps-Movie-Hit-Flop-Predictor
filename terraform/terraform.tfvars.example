@@ -1,0 +1,69 @@
+# Example Terraform Variables File
+# Copy this file to terraform.tfvars and customize the values
+# DO NOT commit terraform.tfvars to version control (contains sensitive data)
+
+# Project Configuration
+project_name = "movie-prediction-mlops"
+environment  = "dev"
+
+# AWS Configuration
+aws_region         = "us-east-1"
+availability_zones = ["us-east-1a", "us-east-1b"]
+
+# Network Configuration
+vpc_cidr               = "10.0.0.0/16"
+public_subnet_cidrs    = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs   = ["10.0.10.0/24", "10.0.11.0/24"]
+
+# EC2 Configuration
+instance_type    = "t2.micro"  # Free tier eligible
+min_size         = 1
+max_size         = 2
+desired_capacity = 1
+
+# IMPORTANT: Generate your SSH key pair first
+# Run: ssh-keygen -t rsa -b 2048 -f ~/.ssh/movie-prediction-key
+# Then paste the PUBLIC key content below
+public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC... your-public-key-here"
+
+# RDS Configuration
+db_instance_class           = "db.t2.micro"  # Free tier eligible
+db_name                     = "mlflow"
+db_username                 = "mlflow_user"
+db_password                 = "ChangeMe123!"  # Use a strong password
+db_allocated_storage        = 20              # Free tier: 20GB
+db_backup_retention_period  = 7
+
+# S3 Configuration
+s3_bucket_prefix    = "movie-prediction"
+enable_s3_versioning = true
+enable_s3_encryption = true
+
+# Application Configuration
+app_port         = 8000
+monitoring_port  = 9000
+health_check_path = "/health"
+
+# Security Configuration (IMPORTANT: Restrict this for production)
+allowed_cidr_blocks = ["0.0.0.0/0"]  # Change to your IP range for security
+
+# Monitoring Configuration
+enable_detailed_monitoring = true
+sns_email_endpoint         = "your-email@example.com"  # For alerts
+
+# Cost Control
+enable_auto_shutdown = true
+business_hours_start = "09:00"
+business_hours_end   = "18:00"
+
+# Docker Configuration
+docker_image_tag = "latest"
+ecr_repository_url = ""  # Will be set after ECR repository is created
+
+# Additional Tags
+additional_tags = {
+  Owner       = "mlops-team"
+  Purpose     = "movie-prediction"
+  CostCenter  = "ml-ops"
+  Contact     = "your-email@example.com"
+}
